@@ -3,6 +3,7 @@ package com.kishkan.epam;
 import com.kishkan.epam.dto.Article;
 import com.kishkan.epam.dto.Category;
 import com.kishkan.epam.dto.Subcategory;
+import com.kishkan.epam.service.XmlMarshaller;
 import com.kishkan.epam.service.XmlToJsonConverter;
 import com.kishkan.epam.service.XmlUnmarshaller;
 
@@ -14,6 +15,7 @@ public class Application {
     public static void main(String[] args) {
         XmlUnmarshaller articleUnmarshaller = new XmlUnmarshaller();
         XmlToJsonConverter xmlToJsonConverter = new XmlToJsonConverter();
+        XmlMarshaller xmlMarshaller = new XmlMarshaller();
         String source = "src/main/resources/xml/mock_product_list.xml";
 
         try {
@@ -38,11 +40,20 @@ public class Application {
         }
 
         try {
-            String json = xmlToJsonConverter.convertSmlToJson(source, Article.class, 200101L);
+            String json = xmlToJsonConverter.convertSmlToJson(source, Category.class, 110002L);
             System.out.println(json);
         } catch (JAXBException | XMLStreamException e) {
             e.printStackTrace();
         }
+
+        try {
+            Category category = articleUnmarshaller.unmarshalXmlById(source, Category.class, 110002L);
+            String resultXml = xmlMarshaller.marshalXml(category);
+            System.out.println(resultXml);
+        } catch (XMLStreamException | JAXBException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }

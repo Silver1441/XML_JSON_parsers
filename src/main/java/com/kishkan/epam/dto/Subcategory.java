@@ -2,10 +2,12 @@ package com.kishkan.epam.dto;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlType(name = "subcategory")
+@XmlRootElement
 public class Subcategory {
     @XmlAttribute(name = "id")
     private long id;
