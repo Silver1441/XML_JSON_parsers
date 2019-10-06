@@ -12,9 +12,9 @@ import javax.xml.transform.stream.StreamSource;
 public class ArticleUnmarshallerImpl<T> {
     private T valueClass;
 
-    public ArticleUnmarshallerImpl(T valueClass) {
-        this.valueClass = valueClass;
-    }
+//    public ArticleUnmarshallerImpl(T valueClass) {
+//        this.valueClass = valueClass;
+//    }
 
     public <T> void unmarshalArticle(String source) throws XMLStreamException, JAXBException {
 
@@ -28,7 +28,7 @@ public class ArticleUnmarshallerImpl<T> {
 
         JAXBContext context = JAXBContext.newInstance(valueClass.getClass());
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        JAXBElement<T> element = unmarshaller.unmarshal(xmlStreamReader, valueClass);
+        JAXBElement<T> element = (JAXBElement<T>) unmarshaller.unmarshal(xmlStreamReader, valueClass.getClass());
         T dto = element.getValue();
 
         xmlStreamReader.close();
