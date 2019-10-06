@@ -18,7 +18,6 @@ public class XmlValidator {
                     .newValidator()
                     .validate(new StreamSource(new StringReader(xml)));
         } catch (SAXException e) {
-            e.printStackTrace();
             return false;
         }
         return true;

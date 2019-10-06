@@ -52,6 +52,16 @@ public class Application {
         }
 
         try {
+            Subcategory subcategory = articleUnmarshaller.unmarshalXmlById(SOURCE, Subcategory.class, 120002L);
+            String resultXml = xmlMarshaller.marshalXml(subcategory);
+            System.out.println(resultXml);
+            boolean isValid = XmlValidator.validateXml(resultXml, SOURCE_ARTICLE_XSD);
+            System.out.println("Is xml valid: " + isValid + "\n");
+        } catch (XMLStreamException | JAXBException | IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
             Article article = articleUnmarshaller.unmarshalXmlById(SOURCE, Article.class, 200101L);
             String resultXml = xmlMarshaller.marshalXml(article);
             System.out.println(resultXml);
@@ -60,9 +70,6 @@ public class Application {
         } catch (XMLStreamException | JAXBException | IOException e) {
             e.printStackTrace();
         }
-
-
-
 
     }
 }
