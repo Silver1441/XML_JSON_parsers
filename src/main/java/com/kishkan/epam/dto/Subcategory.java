@@ -9,5 +9,5 @@ import java.util.List;
 @XmlRootElement
 public class Subcategory {
     private String name;
-    private List<Goods> goodsList = new ArrayList<>();
+    private List<Article> articles = new ArrayList<>();
 }
