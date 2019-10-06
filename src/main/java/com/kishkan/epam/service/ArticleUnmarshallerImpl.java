@@ -9,20 +9,20 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.transform.stream.StreamSource;
 
-public class ArticleUnmarshallerImpl<T> {
-    private T valueClass;
+public class ArticleUnmarshallerImpl {
+    //private T valueClass;
 
 //    public ArticleUnmarshallerImpl(T valueClass) {
 //        this.valueClass = valueClass;
 //    }
 
-    public <T> void unmarshalArticle(String source) throws XMLStreamException, JAXBException {
+    public <T> void unmarshalArticle(String source, Class<T> valueClass) throws XMLStreamException, JAXBException {
 
         XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
         XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(new StreamSource(source));
 
         xmlStreamReader.nextTag();
-        while(!xmlStreamReader.getLocalName().equals("category")) {
+        while(!xmlStreamReader.getLocalName().equals("article")) {
             xmlStreamReader.nextTag();
         }
 
