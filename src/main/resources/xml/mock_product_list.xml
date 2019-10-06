@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <product_list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:noNamespaceSchemaLocation="product_list.xsd">
-    <category name = "devices">
-        <subcategory name = "smartphones">
+    <category id ="110001" name = "devices">
+        <subcategory id ="120001" name = "smartphones">
             <article id ="100101" stock = "12">
-                <manufacturer>Samsung</manufacturer>
+                <manufacturer></manufacturer>
                 <model>GX106</model>
                 <production_date>12-01-2019</production_date>
                 <color>black</color>
@@ -20,7 +20,7 @@
             </article>
         </subcategory>
 
-        <subcategory name = "tablets">
+        <subcategory id ="120002" name = "tablets">
             <article id ="100201" stock = "2">
                 <manufacturer>Xiaomi</manufacturer>
                 <model>AN001</model>
@@ -39,8 +39,8 @@
         </subcategory>
     </category>
 
-    <category name = "accessories">
-        <subcategory name = "cases">
+    <category id ="110002" name = "accessories">
+        <subcategory id ="220003" name = "cases">
             <article id ="200101" stock = "12">
                 <manufacturer>Super cases</manufacturer>
                 <model>CB023</model>

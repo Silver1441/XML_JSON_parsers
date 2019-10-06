@@ -13,20 +13,25 @@ import javax.xml.transform.stream.StreamSource;
 
 public class XmlUnmarshaller {
 
-    public <T extends DtoHasLocalName> T unmarshalXml(String source, T valueClass, Long id)
+    public <T extends DtoHasLocalName> T unmarshalXmlById(String source, T valueClass, Long id)
             throws XMLStreamException, JAXBException {
 
         XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
         XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(new StreamSource(source));
 
         xmlStreamReader.nextTag();
-//        while(!xmlStreamReader.getLocalName().equals(valueClass.getLocalName())) {
-//            xmlStreamReader.nextTag();
-//        }
 
-        while(xmlStreamReader.hasNext()) {
-            xmlStreamReader.nextTag();
+        while(xmlStreamReader.hasNext()){
+            xmlStreamReader.next();
+            if(xmlStreamReader.getEventType() == XMLStreamReader.START_ELEMENT
+                    && xmlStreamReader.getAttributeValue(0) != null
+                    && xmlStreamReader.getAttributeValue(0).equals(id.toString())
+                    && xmlStreamReader.getLocalName().equals(valueClass.getLocalName())){
+                break;
+            }
         }
+
+        xmlStreamReader.isWhiteSpace();
 
         Unmarshaller unmarshaller = JAXBContext.newInstance(valueClass.getClass()).createUnmarshaller();
         JAXBElement<? extends DtoHasLocalName> element = unmarshaller.unmarshal(xmlStreamReader, valueClass.getClass());

@@ -28,14 +28,13 @@ public class Article extends DtoHasLocalName {
 
     @Override
     public String toString() {
-        return "Article{" +
-                "ID=" + ID +
+        return "{ID=" + ID +
                 ", stock=" + stock +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", productionDate='" + productionDate + '\'' +
                 ", color='" + color + '\'' +
                 ", price=" + price +
-                '}';
+                '}' + "\n";
     }
 }
