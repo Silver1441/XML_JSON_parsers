@@ -3,16 +3,15 @@ package com.kishkan.epam;
 import com.kishkan.epam.dto.Article;
 import com.kishkan.epam.dto.Category;
 import com.kishkan.epam.dto.Subcategory;
-import com.kishkan.epam.service.JsonToXmlConverter;
-import com.kishkan.epam.service.XmlMarshaller;
-import com.kishkan.epam.service.XmlToJsonConverter;
-import com.kishkan.epam.service.XmlUnmarshaller;
+import com.kishkan.epam.service.*;
 
 import javax.xml.bind.JAXBException;
 import javax.xml.stream.XMLStreamException;
+import java.io.IOException;
 
 public class Application {
     static final String SOURCE = "src/main/resources/xml/mock_product_list.xml";
+    static final String SOURCE_ARTICLE_XSD = "src/main/resources/xml/article.xsd";
 
     public static void main(String[] args) {
         XmlUnmarshaller articleUnmarshaller = new XmlUnmarshaller();
@@ -53,10 +52,12 @@ public class Application {
         }
 
         try {
-            Category category = articleUnmarshaller.unmarshalXmlById(SOURCE, Category.class, 110001L);
-            String resultXml = xmlMarshaller.marshalXml(category);
+            Article article = articleUnmarshaller.unmarshalXmlById(SOURCE, Article.class, 200101L);
+            String resultXml = xmlMarshaller.marshalXml(article);
             System.out.println(resultXml);
-        } catch (XMLStreamException | JAXBException e) {
+            boolean isValid = XmlValidator.validateXml(resultXml, SOURCE_ARTICLE_XSD);
+            System.out.println("Is xml valid: " + isValid);
+        } catch (XMLStreamException | JAXBException | IOException e) {
             e.printStackTrace();
         }
 
