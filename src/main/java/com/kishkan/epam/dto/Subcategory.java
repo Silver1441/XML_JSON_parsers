@@ -7,6 +7,8 @@ import java.util.List;
 
 @XmlType(name = "subcategory")
 public class Subcategory extends DtoHasLocalName {
+    @XmlAttribute(name = "id")
+    private long id;
     @XmlAttribute(name = "name")
     private String name;
     @XmlElement(name = "article")
@@ -19,7 +21,7 @@ public class Subcategory extends DtoHasLocalName {
 
     @Override
     public String toString() {
-        return "\nSubcategory:\n{name='" + name + '\'' +
+        return "\nSubcategory:\n{name = " + name + "\nID = " + id +
                 "\n" + articles +
                 '}';
     }

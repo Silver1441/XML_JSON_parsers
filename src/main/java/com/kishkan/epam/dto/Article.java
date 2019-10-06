@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "article")
 public class Article extends DtoHasLocalName {
     @XmlAttribute(name = "id")
-    private long ID;
+    private long id;
     @XmlAttribute(name = "stock")
     private int stock;
     @XmlElement(name = "manufacturer")
@@ -28,7 +28,7 @@ public class Article extends DtoHasLocalName {
 
     @Override
     public String toString() {
-        return "{ID=" + ID +
+        return "{ID = " + id +
                 ", stock=" + stock +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
