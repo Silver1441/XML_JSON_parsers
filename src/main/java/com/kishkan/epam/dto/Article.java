@@ -1,10 +1,8 @@
 package com.kishkan.epam.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.xml.bind.annotation.*;
-import java.time.LocalDate;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "article")
 public class Article {

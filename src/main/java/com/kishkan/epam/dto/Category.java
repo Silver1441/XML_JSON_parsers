@@ -1,18 +1,14 @@
 package com.kishkan.epam.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.ArrayList;
 import java.util.List;
 
-@XmlType(name = "article")
-@Setter
-@Getter
+@XmlType(name = "category")
 public class Category {
     @XmlAttribute(name = "name")
     private String name;
-    private List<Subcategory> subcategories = new ArrayList<>();
+    @XmlElement(name = "subcategory")
+    private List<Subcategory> subcategories;
 }

@@ -1,6 +1,6 @@
 package com.kishkan.epam.service;
 
-import com.kishkan.epam.dto.Article;
+import com.kishkan.epam.dto.Category;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -14,20 +14,19 @@ import javax.xml.transform.stream.StreamSource;
 public class ArticleUnmarshallerImpl implements ArticleUnmarshaller {
     public void unmarshalArticle(String source) throws XMLStreamException, JAXBException {
         XMLInputFactory xmlInputFactory = XMLInputFactory.newFactory();
-        StreamSource xmlStream = new StreamSource(source);
-        XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(xmlStream);
+        XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(new StreamSource(source));
 
         xmlStreamReader.nextTag();
-        while(!xmlStreamReader.getLocalName().equals("article")) {
+        while(!xmlStreamReader.getLocalName().equals("category")) {
             xmlStreamReader.nextTag();
         }
 
-        JAXBContext context = JAXBContext.newInstance(Article.class);
+        JAXBContext context = JAXBContext.newInstance(Category.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        JAXBElement<Article> element = unmarshaller.unmarshal(xmlStreamReader, Article.class);
-        Article article = element.getValue();
+        JAXBElement<Category> element = unmarshaller.unmarshal(xmlStreamReader, Category.class);
+        Category category = element.getValue();
 
         xmlStreamReader.close();
-        System.out.println(article);
+        System.out.println(category);
     }
 }
