@@ -7,7 +7,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.stream.XMLStreamException;
 
 public class XmlToJsonConverter {
-    public <T> String convertSmlToJson(String source, Class<T> valueClass, Long id)
+    public <T> String convertXmlToJson(String source, Class<T> valueClass, Long id)
             throws JAXBException, XMLStreamException {
 
         XmlUnmarshaller articleUnmarshaller = new XmlUnmarshaller();
