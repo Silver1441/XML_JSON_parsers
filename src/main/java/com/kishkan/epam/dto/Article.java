@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "article")
-public class Article extends DtoHasLocalName {
+public class Article {
     @XmlAttribute(name = "id")
     private long id;
     @XmlAttribute(name = "stock")
@@ -20,11 +20,6 @@ public class Article extends DtoHasLocalName {
     private String color;
     @XmlElement(name = "price")
     private Double price;
-
-    @Override
-    public String getLocalName() {
-        return "article";
-    }
 
     @Override
     public String toString() {

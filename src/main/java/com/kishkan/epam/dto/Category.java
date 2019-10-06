@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 @XmlType(name = "category")
-public class Category extends DtoHasLocalName {
+public class Category {
     @XmlAttribute(name = "id")
     private long id;
     @XmlAttribute(name = "name")
@@ -15,15 +15,10 @@ public class Category extends DtoHasLocalName {
     private List<Subcategory> subcategories;
 
     @Override
-    public String getLocalName() {
-        return "category";
-    }
-
-    @Override
     public String toString() {
         return "\nCategory:" +
                 "\n{name = " + name + "\nID = " + id +
                 "\nsubcategories:" + subcategories +
-                '}';
+                '}' + "\n";
     }
 }
