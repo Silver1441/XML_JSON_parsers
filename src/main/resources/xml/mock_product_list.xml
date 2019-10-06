@@ -20,7 +20,7 @@
             </article>
         </subcategory>
 
-        <!--<subcategory name = "tablets">
+        <subcategory name = "tablets">
             <article id ="100201" stock = "2">
                 <manufacturer>Xiaomi</manufacturer>
                 <model>AN001</model>
@@ -36,10 +36,10 @@
                 <color>white</color>
                 <price>41999</price>
             </article>
-        </subcategory>-->
+        </subcategory>
     </category>
 
-    <!--<category name = "accessories">
+    <category name = "accessories">
         <subcategory name = "cases">
             <article id ="200101" stock = "12">
                 <manufacturer>Super cases</manufacturer>
@@ -57,5 +57,5 @@
                 <price>1799</price>
             </article>
         </subcategory>
-    </category>-->
+    </category>
 </product_list>
